@@ -14,7 +14,7 @@ def load_gammapy_analysis_configuration(path="/fefs/aswg/workspace/juan.jimenez/
     _e_true = dict["e_true"]
 
     if Print == True:
-        print("Gammapy analysis configuration:")
+        print("Gammapy analysis configuration:\n")
         display(dict)
         
     return target_name, n_off_regions, _e_reco, _e_true
