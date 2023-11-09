@@ -6,6 +6,7 @@ import os
 import shutil
 import matplotlib.colors as colors
 from datetime import datetime
+from scipy.stats import chi2
 from scipy.optimize import fsolve
 
 # logging
@@ -14,6 +15,7 @@ logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
 logger.setLevel(logging.INFO)
 
+sigma = "$\sigma$"
 
 def find_files_in_dir(directory):
     """
@@ -194,3 +196,34 @@ def get_colors_multiplot(array, COLORS=predC):
         colors.append(color_cr(normalized_value, COLORS))   
     
     return colors
+
+def get_cmap_colors(array, cmap):
+    norm   = mpl.colors.Normalize(vmin=np.min(array), vmax=np.max(array))
+    colors = mpl.cm.ScalarMappable(norm, cmap).to_rgba(array)    
+    
+    return norm, colors
+
+def calculate_chi2_pvalue_const(x, y, uy, sys_error=0):
+    x, y, uy = np.array(x), np.array(y), np.array(uy)
+    
+    uncertainty = np.sqrt((sys_error * y)**2 + uy**2)
+    
+    mean_y     = (y/uncertainty**2).sum() / (1/uncertainty**2).sum()
+    mean_y_err = np.sqrt(1/np.sum(1/uncertainty**2))
+    
+    chi2_value = np.sum((y - mean_y)**2/uncertainty**2)
+    ndf = len(y) - 1
+    pvalue = chi2.sf(x=chi2_value, df=ndf)
+    return chi2_value, ndf, pvalue
+
+def calculate_chi2_pvalue_fun(x, y, uy, f, params, sys_error=0):
+    x, y, uy = np.array(x), np.array(y), np.array(uy)
+    
+    uncertainty = np.sqrt((sys_error * y)**2 + uy**2)
+    
+    mean_y     = f(params, x)
+    
+    chi2_value = np.sum((y - mean_y)**2/uncertainty**2)
+    ndf = len(y) - 1
+    pvalue = chi2.sf(x=chi2_value, df=ndf)
+    return chi2_value, ndf, pvalue
