@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import pandas as pd
 import numpy as np
 import os
@@ -122,6 +123,12 @@ def create_cmap(cols):
     return colors.LinearSegmentedColormap.from_list('',  cols)
 
 
+def plot_colorbar(fig, ax, array, cmap, label=""):
+    
+    norm = mpl.colors.Normalize(vmin=min(array), vmax=max(array))
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    fig.colorbar(sm, ax=ax, label=label)    
 
 
 c1 = (5/255,5/255,153/255)
@@ -176,10 +183,14 @@ def color_cr(x, COLORS=predC):
     return (r, g, b)
 
 
-
-
-
-
-
-
-
+def get_colors_multiplot(array, COLORS=predC):
+    
+    # getting the color of each run
+    colors = []
+    for i in range(len(array)):
+        
+        normalized_value = (max(array) - array[i]) / max(array)
+        
+        colors.append(color_cr(normalized_value, COLORS))   
+    
+    return colors

@@ -52,15 +52,16 @@ def weighted_average(table, sys_error=0):
     uncertainty = np.sqrt((sys_error * table["flux"])**2 + table["flux_err"]**2)
     return (val/uncertainty**2).sum() / (1/uncertainty**2).sum(), np.sqrt(1/np.sum(1/uncertainty**2))
 
+aux.createdir(dicts_dir)
 
 
 def compute(e_ranges_str):
     
-    
+    # Energy LC limits
     e_lc_min, e_lc_max = np.array(e_ranges_str.split(",")).astype(float)
     
-    
-    fname_dict = os.path.join(dicts_dir, f"dict_{e_lc_min:.2f}_{int(e_lc_max)}.pkl")
+    # Filename of th edictionary to save
+    fname_dict = os.path.join(dicts_dir, f"dict_{e_lc_min:.3f}_{int(e_lc_max)}.pkl")
     
     # reading the configuration from the gammapy configuration file
     target_name, n_off_regions, _e_reco, _e_true = docs.load_gammapy_analysis_configuration(Print=False)
