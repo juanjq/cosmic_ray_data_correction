@@ -203,8 +203,8 @@ def get_cmap_colors(array, cmap):
     
     return norm, colors
 
-def calculate_chi2_pvalue_const(x, y, uy, sys_error=0):
-    x, y, uy = np.array(x), np.array(y), np.array(uy)
+def calculate_chi2_pvalue_const(y, uy, sys_error=0):
+    y, uy = np.array(y), np.array(uy)
     
     uncertainty = np.sqrt((sys_error * y)**2 + uy**2)
     
@@ -227,3 +227,9 @@ def calculate_chi2_pvalue_fun(x, y, uy, f, params, sys_error=0):
     ndf = len(y) - 1
     pvalue = chi2.sf(x=chi2_value, df=ndf)
     return chi2_value, ndf, pvalue
+
+def weighted_average(y, uy, sys_error=0):
+    y, uy = np.array(y), np.array(uy)
+    
+    uncertainty = np.sqrt((sys_error * y)**2 + uy**2)
+    return (y/uncertainty**2).sum() / (1/uncertainty**2).sum(), np.sqrt(1/np.sum(1/uncertainty**2))
