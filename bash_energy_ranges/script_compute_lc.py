@@ -38,12 +38,10 @@ def calculate_chi2_pvalue(table, sys_error=0):
     flux = table["flux"]
     mean_flux = (flux/uncertainty**2).sum() / (1/uncertainty**2).sum()
     mean_flux_err = np.sqrt(1/np.sum(1/uncertainty**2))
-    print(f"Weighted mean flux: {mean_flux:.3e} +/- {mean_flux_err:.3e} cm-2 s-1")
     
     chi2_value = np.sum((table["flux"] - mean_flux)**2/uncertainty**2)
     ndf = len(table["flux"]) - 1
     pvalue = chi2.sf(x=chi2_value, df=ndf)
-    print(f"Chi2: {chi2_value:.1f}, ndf: {ndf}, P-value: {pvalue:.2e}")
     return chi2_value, ndf, pvalue
 
 
@@ -61,7 +59,7 @@ def compute(e_ranges_str):
     e_lc_min, e_lc_max = np.array(e_ranges_str.split(",")).astype(float)
     
     # Filename of th edictionary to save
-    fname_dict = os.path.join(dicts_dir, f"dict_{e_lc_min:.3f}_{int(e_lc_max)}.pkl")
+    fname_dict = os.path.join(dicts_dir, "dict_{:.3f}_{}.pkl".format(e_lc_min, int(e_lc_max)))
     
     # reading the configuration from the gammapy configuration file
     target_name, n_off_regions, _e_reco, _e_true = docs.load_gammapy_analysis_configuration(Print=False)
@@ -119,7 +117,7 @@ def compute(e_ranges_str):
     e_lc_max = energy_axis.edges[-1]
 
     print("Spectral fit will be done in energy edges:\n", energy_fit_edges)
-    print(f"\nLC will be estimated from {e_lc_min:.1f} to {e_lc_max:.1f}")
+    print("\nLC will be estimated from {:.1f} to {:.1f}".format(e_lc_min, e_lc_max))
     
 
     # geometry defining the ON region and SpectrumDataset based on it
@@ -158,6 +156,7 @@ def compute(e_ranges_str):
         datasets.append(dataset_on_off) 
 
     # Stacking all the datasets in one
+    print("Stacking datasets")
     stacked_dataset = Datasets(datasets).stack_reduce()    
     
     # defining the model we want to fit and the starting values
@@ -173,6 +172,7 @@ def compute(e_ranges_str):
         name="crab"
     )
 
+    print("\nThe model used:\n", model.to_dict())
     # We set the model of all datasets to log parabola
     stacked_dataset.models = model
 
@@ -190,6 +190,7 @@ def compute(e_ranges_str):
     )
 
     # We apply the flux point estiation from the datasets
+    print("\n\nExtracting flux points")
     flux_points = fpe.run(datasets=stacked_dataset)
 
     model.parameters["alpha"].frozen = True
@@ -207,6 +208,7 @@ def compute(e_ranges_str):
     for data in datasets:
         data.models = model
 
+    print("\nRunning the LC estimator over all runs")
     lc_runwise = lc_maker_1d.run(datasets)
     lightcurve = lc_runwise.to_table(sed_type="flux", format="lightcurve")
     
@@ -215,7 +217,7 @@ def compute(e_ranges_str):
 
     chi2_val, ndf, pvalue = calculate_chi2_pvalue(lightcurve, sys_error=0.0)   
     
-    
+    print("\nExtracting variables")
     # Start time, duration and central time
     time_min = Time(np.hstack(lightcurve["time_min"]), format='mjd').datetime
     time_max = Time(np.hstack(lightcurve["time_max"]), format='mjd').datetime
@@ -240,7 +242,7 @@ def compute(e_ranges_str):
     flux_crab = crab.integral(e_lc_min, e_lc_max)
     flux_crab_error = flux_crab * 0    
     
-    
+    print("\nCreating dict")
     dict_total = {
 
         "dict_model" : best_fit_model.to_dict(), # SkyModel.from_dict(<>)
@@ -269,8 +271,16 @@ def compute(e_ranges_str):
     }
 
 
+    print("Writing object to disk")
     # Saving the object
     with open(fname_dict, 'wb') as f:
-        pickle.dump(dict_total, f, pickle.HIGHEST_PROTOCOL)    
+        pickle.dump(dict_total, f, pickle.HIGHEST_PROTOCOL) 
+        
+    print("Finished --> ", fname_dict)
     
-    
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        input_string = sys.argv[1]  # Get the input string from the command line argument
+        compute(input_string)  # Call the function with the provided input
+    else:
+        print("Please provide an input string.")    
