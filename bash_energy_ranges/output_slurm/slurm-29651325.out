@@ -1,0 +1,25 @@
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/numpy/core/fromnumeric.py:86: RuntimeWarning: overflow encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+Spectral fit will be done in energy edges:
+ [2.73644000e-02 4.25652885e-02 6.62102507e-02 1.02989959e-01
+ 1.60200746e-01 2.49192052e-01 3.87617913e-01 6.02939158e-01
+ 9.37871074e-01 1.45885723e+00 2.26925052e+00 3.52981623e+00
+ 5.49062454e+00 8.54065932e+00 1.32849844e+01 2.06647760e+01
+ 3.21440321e+01 5.00000000e+01] TeV
+
+LC will be estimated from 0.0 TeV to 50.0 TeV
+Stacking datasets
+
+The model used:
+ {'name': 'crab', 'type': 'SkyModel', 'spectral': {'type': 'LogParabolaSpectralModel', 'parameters': [{'name': 'amplitude', 'value': 1e-12, 'unit': 'cm-2 s-1 TeV-1'}, {'name': 'reference', 'value': 1.0, 'unit': 'TeV'}, {'name': 'alpha', 'value': 2.0}, {'name': 'beta', 'value': 0.1}]}}
+
+
+Extracting flux points
+
+Running the LC estimator over all runs
+
+Extracting variables
+
+Creating dict
+Writing object to disk
+Finished -->  objects/dicts_sed_and_lc/dict_0.027_50.pkl

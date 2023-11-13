@@ -1,0 +1,23 @@
+Spectral fit will be done in energy edges:
+ [2.00220037e-02 3.17218327e-02 5.02584400e-02 7.96268871e-02
+ 1.26156744e-01 1.99876255e-01 3.16673657e-01 5.01721453e-01
+ 7.94901661e-01 1.25940130e+00 1.99533064e+00 3.16129922e+00
+ 5.00859987e+00 7.93536799e+00 1.25723888e+01 1.99190461e+01
+ 3.15587121e+01 5.00000000e+01] TeV
+
+LC will be estimated from 0.0 TeV to 50.0 TeV
+Stacking datasets
+
+The model used:
+ {'name': 'crab', 'type': 'SkyModel', 'spectral': {'type': 'LogParabolaSpectralModel', 'parameters': [{'name': 'amplitude', 'value': 1e-12, 'unit': 'cm-2 s-1 TeV-1'}, {'name': 'reference', 'value': 1.0, 'unit': 'TeV'}, {'name': 'alpha', 'value': 2.0}, {'name': 'beta', 'value': 0.1}]}}
+
+
+Extracting flux points
+
+Running the LC estimator over all runs
+
+Extracting variables
+
+Creating dict
+Writing object to disk
+Finished -->  objects/dicts_sed_and_lc/dict_0.020_50.pkl

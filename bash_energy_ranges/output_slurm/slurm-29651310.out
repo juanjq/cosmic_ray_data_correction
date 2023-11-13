@@ -1,0 +1,35 @@
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/numpy/core/fromnumeric.py:86: RuntimeWarning: overflow encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/numpy/core/fromnumeric.py:86: RuntimeWarning: overflow encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+Spectral fit will be done in energy edges:
+ [1.62575567e-02 2.53996842e-02 3.96827131e-02 6.19975315e-02
+ 9.68606632e-02 1.51328413e-01 2.36425066e-01 3.69374202e-01
+ 5.77084753e-01 9.01597379e-01 1.40859350e+00 2.20068925e+00
+ 3.43820495e+00 5.37161406e+00 8.39223898e+00 1.31114548e+01
+ 2.04844319e+01 3.20034622e+01 5.00000000e+01] TeV
+
+LC will be estimated from 0.0 TeV to 50.0 TeV
+Stacking datasets
+
+The model used:
+ {'name': 'crab', 'type': 'SkyModel', 'spectral': {'type': 'LogParabolaSpectralModel', 'parameters': [{'name': 'amplitude', 'value': 1e-12, 'unit': 'cm-2 s-1 TeV-1'}, {'name': 'reference', 'value': 1.0, 'unit': 'TeV'}, {'name': 'alpha', 'value': 2.0}, {'name': 'beta', 'value': 0.1}]}}
+
+
+Extracting flux points
+
+Running the LC estimator over all runs
+
+Extracting variables
+
+Creating dict
+Writing object to disk
+Finished -->  objects/dicts_sed_and_lc/dict_0.016_50.pkl

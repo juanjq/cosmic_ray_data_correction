@@ -1,0 +1,51 @@
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/numpy/core/fromnumeric.py:86: RuntimeWarning: overflow encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/gammapy/stats/fit_statistics.py:209: RuntimeWarning: overflow encountered in square
+  D = np.sqrt(C**2 + 4 * alpha * (alpha + 1) * n_off * mu_sig)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/gammapy/stats/fit_statistics.py:189: RuntimeWarning: invalid value encountered in add
+  stat = 2 * (term1 + term2 + term3)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/numpy/core/fromnumeric.py:86: RuntimeWarning: overflow encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/numpy/core/fromnumeric.py:86: RuntimeWarning: overflow encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+Spectral fit will be done in energy edges:
+ [ 0.24374442  0.37984314  0.59193483  0.92245143  1.43751742  2.24017903
+  3.49102002  5.44028873  8.47796386 13.21177508 20.58878804 32.08487809
+ 50.        ] TeV
+
+LC will be estimated from 0.2 TeV to 50.0 TeV
+Stacking datasets
+
+The model used:
+ {'name': 'crab', 'type': 'SkyModel', 'spectral': {'type': 'LogParabolaSpectralModel', 'parameters': [{'name': 'amplitude', 'value': 1e-12, 'unit': 'cm-2 s-1 TeV-1'}, {'name': 'reference', 'value': 1.0, 'unit': 'TeV'}, {'name': 'alpha', 'value': 2.0}, {'name': 'beta', 'value': 0.1}]}}
+
+
+Extracting flux points
+
+Running the LC estimator over all runs
+
+Extracting variables
+
+Creating dict
+Writing object to disk
+Finished -->  objects/dicts_sed_and_lc/dict_0.244_50.pkl

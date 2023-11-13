@@ -1,0 +1,51 @@
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: overflow encountered in power
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/astropy/units/quantity.py:620: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/gammapy/stats/fit_statistics.py:209: RuntimeWarning: overflow encountered in square
+  D = np.sqrt(C**2 + 4 * alpha * (alpha + 1) * n_off * mu_sig)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/gammapy/stats/fit_statistics.py:189: RuntimeWarning: invalid value encountered in add
+  stat = 2 * (term1 + term2 + term3)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/numpy/core/fromnumeric.py:86: RuntimeWarning: overflow encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+/fefs/aswg/software/conda/envs/gammapy-v1.0/lib/python3.9/site-packages/numpy/core/fromnumeric.py:86: RuntimeWarning: overflow encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+Spectral fit will be done in energy edges:
+ [1.07189132e-02 1.67203939e-02 2.60820819e-02 4.06853451e-02
+ 6.34649225e-02 9.89987028e-02 1.54427718e-01 2.40891238e-01
+ 3.75765370e-01 5.86155041e-01 9.14341126e-01 1.42627741e+00
+ 2.22484497e+00 3.47052761e+00 5.41366346e+00 8.44475403e+00
+ 1.31729412e+01 2.05484233e+01 3.20534112e+01 5.00000000e+01] TeV
+
+LC will be estimated from 0.0 TeV to 50.0 TeV
+Stacking datasets
+
+The model used:
+ {'name': 'crab', 'type': 'SkyModel', 'spectral': {'type': 'LogParabolaSpectralModel', 'parameters': [{'name': 'amplitude', 'value': 1e-12, 'unit': 'cm-2 s-1 TeV-1'}, {'name': 'reference', 'value': 1.0, 'unit': 'TeV'}, {'name': 'alpha', 'value': 2.0}, {'name': 'beta', 'value': 0.1}]}}
+
+
+Extracting flux points
+
+Running the LC estimator over all runs
+
+Extracting variables
+
+Creating dict
+Writing object to disk
+Finished -->  objects/dicts_sed_and_lc/dict_0.011_50.pkl

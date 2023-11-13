@@ -29,7 +29,7 @@ import documents as docs
 # dl3 path where dl3 and index files are
 dl3_dir = "/fefs/aswg/workspace/juan.jimenez/data/lst1_systematics/dl3"
 
-dicts_dir = "objects/dicts_sed_and_lc/"
+dicts_dir = "/fefs/aswg/workspace/juan.jimenez/lst1_systematics/objects/dicts_sed_and_lc/"
 # ============================ #
 
 
