@@ -21,15 +21,15 @@ from gammapy.maps            import MapAxis, RegionGeom, Map, TimeMapAxis
 from gammapy.data            import DataStore
 
 # import scripts
-sys.path.insert(0, os.path.join("/fefs/aswg/workspace/juan.jimenez/lst1_systematics/scripts"))
+sys.path.insert(0, os.path.join("/fefs/aswg/workspace/juan.jimenez/cosmic_ray_data_correction/scripts"))
 import auxiliar  as aux
 import documents as docs
 
 # ============================ #
 # dl3 path where dl3 and index files are
-dl3_dir = "/fefs/aswg/workspace/juan.jimenez/data/lst1_systematics/dl3"
+dl3_dir = "/fefs/aswg/workspace/juan.jimenez/data/cosmic_ray_data_correction/dl3"
 
-dicts_dir = "/fefs/aswg/workspace/juan.jimenez/lst1_systematics/objects/dicts_sed_and_lc/"
+dicts_dir = "/fefs/aswg/workspace/juan.jimenez/cosmic_ray_data_correction/analysis_first_corrections/objects/dicts_sed_and_lc/"
 # ============================ #
 
 

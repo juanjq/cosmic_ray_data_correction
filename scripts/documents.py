@@ -3,7 +3,7 @@ import numpy as np
 from datetime import datetime
 import pickle, sys, os, json
 
-def load_gammapy_analysis_configuration(path="/fefs/aswg/workspace/juan.jimenez/lst1_systematics/analysis_first_corrections/config/config_gammapy_analysis.json", Print=True):
+def load_gammapy_analysis_configuration(path="/fefs/aswg/workspace/juan.jimenez/cosmic_ray_data_correction/analysis_first_corrections/config/config_gammapy_analysis.json", Print=True):
 
     with open(path, "r") as json_file:
         dict = json.load(json_file)
