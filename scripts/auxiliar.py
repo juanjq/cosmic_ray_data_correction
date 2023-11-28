@@ -191,7 +191,7 @@ def get_colors_multiplot(array, COLORS=predC):
     colors = []
     for i in range(len(array)):
         
-        normalized_value = (max(array) - array[i]) / max(array)
+        normalized_value = (max(array) - array[i]) / max(array) * 2
         
         colors.append(color_cr(normalized_value, COLORS))   
     
