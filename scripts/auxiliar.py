@@ -141,7 +141,7 @@ c5 = (255/255,225/255,0/255)
 
 predC = [c1, c2, c3, c4, c5]
 
-def color_cr(x, COLORS=predC):
+def color_cr(x, col=predC):
     
     '''
     Function to create a color gradient of 5 colors in this case
@@ -157,42 +157,53 @@ def color_cr(x, COLORS=predC):
             the rgb values for the color to assign
     
     '''
-    C1, C2, C3, C4, C5 = COLORS[0], COLORS[1], COLORS[2], COLORS[3], COLORS[4]
+    size = len(col)
+    size_bins = size -1 
     
-    if x >= 0 and x <= 1/4:
-        xeff = x
-        r = C1[0] * (1 - 4 * xeff) + C2[0] * 4 * xeff
-        g = C1[1] * (1 - 4 * xeff) + C2[1] * 4 * xeff
-        b = C1[2] * (1 - 4 * xeff) + C2[2] * 4 * xeff
-    elif x > 1/4 and x <= 2/4:
-        xeff = x - 1/4
-        r = C2[0] * (1 - 4 * xeff) + C3[0] * 4 * xeff
-        g = C2[1] * (1 - 4 * xeff) + C3[1] * 4 * xeff
-        b = C2[2] * (1 - 4 * xeff) + C3[2] * 4 * xeff
-    elif x > 2/4 and x < 3/4:
-        xeff = x - 2/4
-        r = C3[0] * (1 - 4 * xeff) + C4[0] * 4 * xeff
-        g = C3[1] * (1 - 4 * xeff) + C4[1] * 4 * xeff
-        b = C3[2] * (1 - 4 * xeff) + C4[2] * 4 * xeff
-    elif x >= 3/4 and x <= 1:
-        xeff = x - 3/4
-        r = C4[0] * (1 - 4 * xeff) + C5[0] * 4 * xeff
-        g = C4[1] * (1 - 4 * xeff) + C5[1] * 4 * xeff
-        b = C4[2] * (1 - 4 * xeff) + C5[2] * 4 * xeff
-    else:
-        print('Input should be in range [0 , 1]')
+    COLORS = []
+    for i in range(size):
         
+        if type(col[i]) == str:
+            c = colors.to_rgba(col[i])
+        else:
+            c = col[i]
+        
+        COLORS.append(c)
+    
+    try:
+        x = float(x)
+    except ValueError:
+        print(f'Input {x} should be a float in range [0 , 1]')
+        
+    if x > 1 or x < 0:
+        print(f'Input {x} should be in range [0 , 1]')
+    
+    for i in range(size_bins):
+        if x >= i/size_bins and x <= (i+1)/size_bins:
+            xeff = x - i/size_bins
+            r = COLORS[i][0] * (1 - size_bins * xeff) + COLORS[i+1][0] * size_bins * xeff
+            g = COLORS[i][1] * (1 - size_bins * xeff) + COLORS[i+1][1] * size_bins * xeff
+            b = COLORS[i][2] * (1 - size_bins * xeff) + COLORS[i+1][2] * size_bins * xeff
+            
     return (r, g, b)
 
 
-def get_colors_multiplot(array, COLORS=predC):
+
+def get_colors_multiplot(array, COLORS=predC, ran=None):
     
     # getting the color of each run
     colors = []
+   
+    if ran != None:
+        m = ran[0]
+        M = ran[1]
+    else:
+        m = min(array)
+        M = max(array)
+    
     for i in range(len(array)):
         
-        normalized_value = (array[i] - min(array)) / (max(array) - min(array))
-        
+        normalized_value = (array[i] - m) / (M - m)
         colors.append(color_cr(normalized_value, COLORS))   
     
     return colors
