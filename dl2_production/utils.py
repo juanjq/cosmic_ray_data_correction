@@ -36,11 +36,17 @@ def add_dl1_paths_to_dict(DICT, dl1_root, dchecking=False):
             warning = f"WARNING: Run {run:5} presented {len(runfiles)} files:"
             log_errors = log_errors + "\n" + warning 
             print(warning)
+            versions = []
             for i, runfile in enumerate(runfiles):
-                selected = "(SELECTED)" if i == 0 else ""
+                versions.append(int(runfile.split("/")[6].split(".")[0][1:]))
+            version_index = np.argmax(versions)
+            for i, runfile in enumerate(runfiles):
+                selected = "(SELECTED)" if i == version_index else ""
                 warning = f"--> {runfile} {selected}"
                 log_errors = log_errors + "\n" + warning 
                 print(warning)
+
+                run_path  = runfiles[version_index]
         if len(runfiles) == 0:
             error = f"ERROR: Run {run:5} not found in {dl1_root}"
             log_errors = log_errors + "\n" + error
@@ -75,13 +81,21 @@ def add_dl1_paths_to_dict(DICT, dl1_root, dchecking=False):
                         log_errors = log_errors + "\n" + warning
                         print(warning)
                         
+                        versions = []
+                        for i, srunfile in enumerate(subrunfiles):
+                            versions.append(int(srunfile.split("/")[6].split(".")[0][1:]))   
+                        version_index = np.argmax(versions)
+                        
                         for j, subrunfile in enumerate(subrunfiles[np.array(subrun_num) == i]):
                             selected = "(SELECTED)" if j == 0 else ""
                             warning = f"--> {subrunfile} {selected}"
                             log_errors = log_errors + "\n" + warning
                             print(warning)        
 
-                    subrun_paths.append(subrunfiles[fi])
+                        subrun_paths.append(subrunfiles[version_index])
+                    else:
+                        subrun_paths.append(subrunfiles[fi])
+                        
                 except ValueError:
                     error = f"ERROR: Subrun {i:04} not found in {dl1_root}"
                     log_errors = log_errors + "\n" + error
