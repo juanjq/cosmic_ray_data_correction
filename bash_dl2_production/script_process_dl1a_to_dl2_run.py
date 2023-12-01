@@ -140,9 +140,6 @@ def run(string):
 
                     command = f"lstchain_dl1ab -f {input_fname} -o {output_fname} -c {config_file} --no-image --light-scaling {scale}"
                     
-                    # with open('tmp.sh', 'w') as f:
-                    #     f.write("#! /bin/bash\n\n")
-                    #     f.write()
                     subprocess.run(command, shell=True)
         
                     DICT[run]["dl1b"]["srunwise"] = output_fname
@@ -155,13 +152,14 @@ def run(string):
                 if srun == subrun_sel:
 
                     input_fname  = DICT[run]["dl1b"]["srunwise"]
-                    output_fname = dir_dl1b + f"{run:05}/" + input_fname.split("/")[-1].replace("dl1", "dl2", 1)
+                    output_fname = dir_dl2 + f"{run:05}/" + input_fname.split("/")[-1].replace("dl1", "dl2", 1)
                     rf_node      = DICT[run]["simulations"]["rf"]
+                    dir_run      = dir_dl2 + f"{run:05}/"
 
-                    print(f"\nComputing dl1b Run {run:5} Subrun {srun:04} - {i/len(sruns)*100:3.1f}% sruns {ir+1}/{len(DICT.keys())} runs")
+                    print(f"\nComputing dl2 Run {run:5} Subrun {srun:04} - {i/len(sruns)*100:3.1f}% sruns {ir+1}/{len(DICT.keys())} runs")
                     print(f"--> {output_fname}\n")
                     
-                    command = f"lstchain_dl1_to_dl2 -f {input_fname} -p {rf_node} -o {dir_dl2} -c {config_file}"
+                    command = f"lstchain_dl1_to_dl2 -f {input_fname} -p {rf_node} -o {dir_run} -c {config_file}"
                     subprocess.run(command, shell=True)
 
                     DICT[run]["dl2"]["srunwise"] = output_fname

@@ -20,7 +20,7 @@ IFS='-' read -r -a splitted <<< "$runsubrun_str"
 n_hours="${splitted[0]}"
 
 echo -e "Sending job $runsubrun_str to convert dl1 to dl2 with different light scaling"
-sbatch -p short --mem=15000 --output="/fefs/aswg/workspace/juan.jimenez/cosmic_ray_data_correction/bash_dl2_production/output_slurm/slurm-%j.out" --begin="now+${n_hours}hour" dl1_light_scaling_to_dl2_tmpjob.sh
+sbatch -p short --mem=80000 --output="/fefs/aswg/workspace/juan.jimenez/cosmic_ray_data_correction/bash_dl2_production/output_slurm/slurm-%j.out" --begin="now+${n_hours}hour" dl1_light_scaling_to_dl2_tmpjob.sh
 
 fi
 
