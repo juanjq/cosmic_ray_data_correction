@@ -3,3 +3,5 @@ __pycache__/
 **/plots/*
 **/objects/*
 *.log
+*.out
+**/output_slurm/*
