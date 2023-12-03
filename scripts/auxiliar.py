@@ -244,3 +244,7 @@ def weighted_average(y, uy, sys_error=0):
     
     uncertainty = np.sqrt((sys_error * y)**2 + uy**2)
     return (y/uncertainty**2).sum() / (1/uncertainty**2).sum(), np.sqrt(1/np.sum(1/uncertainty**2))
+
+
+def sortbased(X, REF):
+    return np.array([x for ref, x in sorted(zip(REF, X))]), np.sort(REF)
