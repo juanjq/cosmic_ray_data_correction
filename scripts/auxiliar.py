@@ -203,8 +203,13 @@ def get_colors_multiplot(array, COLORS=predC, ran=None):
     
     for i in range(len(array)):
         
-        normalized_value = (array[i] - m) / (M - m)
-        colors.append(color_cr(normalized_value, COLORS))   
+        if array[i] > M:
+            colors.append(color_cr(1, COLORS))
+        elif array [i] < m:
+            colors.append(color_cr(0, COLORS))
+        else:
+            normalized_value = (array[i] - m) / (M - m)
+            colors.append(color_cr(normalized_value, COLORS))   
     
     return colors
 
@@ -247,4 +252,4 @@ def weighted_average(y, uy, sys_error=0):
 
 
 def sortbased(X, REF):
-    return np.array([x for ref, x in sorted(zip(REF, X))]), np.sort(REF)
+    return np.sort(REF), np.array([x for ref, x in sorted(zip(REF, X))])

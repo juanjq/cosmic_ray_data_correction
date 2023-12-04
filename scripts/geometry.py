@@ -40,3 +40,11 @@ def LRTFreeZero(x, y, uy):
     lrt = np.sqrt(LS_zero.fun - LS_free.fun)
 
     return lrt, LS_free.x, LS_zero.x
+
+def likelihood_plaw(params, x, y):
+    A, k = params[0], params[1]
+    y_pred = plaw(x, A, k)
+    return np.sum((y - y_pred)**2)
+
+def plaw(x, A, k):
+    return A * x ** k
