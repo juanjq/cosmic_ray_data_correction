@@ -1,2 +1,2 @@
 #! /bin/bash
-python /fefs/aswg/workspace/juan.jimenez/cosmic_ray_data_correction/bash_dl2_production/script_process_dl1a_to_dl2_run.py '0-4028-49-1.0,1.1116545872589776,0.7116545872589776,0.8033212539256442,0.8949879205923109,0.9866545872589776,1.0783212539256442,1.169987920592311,1.2616545872589775'
+python /fefs/aswg/workspace/juan.jimenez/cosmic_ray_data_correction/bash_dl2_production/script_process_dl1a_to_dl2_run.py '0-1921-82-1.0,2.9887764107479398,2.58877641074794,3.1387764107479397'
